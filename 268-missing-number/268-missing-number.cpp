@@ -1,14 +1,19 @@
 class Solution {
 public:
-    int missingNumber(vector<int>& nums) 
+    int missingNumber(vector<int>&a) 
     {
-        int n=nums.size();
-        int ans=0;
+        unordered_map<int,int>map;
+        int n=a.size();
+        for(int i=0;i<=n;i++)
+            map[i]=0;
         for(int i=0;i<n;i++)
         {
-            ans^=nums[i]^i;
+            map[a[i]]+=1;
         }
-        ans^=n;
-        return ans;
+        for(int i=0;i<=n;i++)
+            if(map[i]==0)
+                return i;
+        return n;
+        
     }
 };
