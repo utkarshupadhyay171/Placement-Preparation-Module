@@ -1,28 +1,31 @@
 class Solution {
 public:
-    int thirdMax(vector<int>&a) 
+    int thirdMax(vector<int>&v)
     {
-        
-        sort(a.begin(),a.end());
-        vector<int>t;
-        t.push_back(a[0]);
-        for(int i=1;i<a.size();i++)
+        long long a=LONG_MIN,b=LONG_MIN,c=LONG_MIN;
+        for(int i=0;i<v.size();i++)
         {
-            if(a[i]!=a[i-1])
-                t.push_back(a[i]);
-        }
-        
-        sort(t.begin(),t.end(),greater<int>());
-        if(t.size()<3)
-            return *max_element(t.begin(),t.end());
-        int c=0;
-        for(int i=0;i<3;i++)
-        {
-            c=t[i];
+            if(v[i]==a||v[i]==b||v[i]==c)
+                continue;
             
+            if(v[i]>a)
+            {
+                c=b;
+                b=a;
+                a=v[i];
+            }
+            else if(v[i]>b)
+            {
+                c=b;
+                b=v[i];
+            }
+            else if(v[i]>c)
+            {
+                c=v[i];
+            }
         }
+        if(c==LONG_MIN)
+            return a;
         return c;
-            
-        
     }
 };
