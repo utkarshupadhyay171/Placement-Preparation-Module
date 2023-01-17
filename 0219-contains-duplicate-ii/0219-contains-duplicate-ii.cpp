@@ -1,9 +1,9 @@
 class Solution {
 public:
-    bool containsNearbyDuplicate(vector<int>&a, int k) 
+    bool containsNearbyDuplicate(vector<int>&a, int k)
     {
-        unordered_map<int,int>map;
         int n=a.size();
+        unordered_map<int,int>map;
         for(int i=0;i<=k&&i<n;i++)
         {
             map[a[i]]+=1;
@@ -19,5 +19,4 @@ public:
         }
         return false;
     }
-    
 };
